@@ -6,3 +6,4 @@ youtube-data-api
 googleapiclient
 python-dotenv
 groq
+# -e .
