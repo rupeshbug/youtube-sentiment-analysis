@@ -17,7 +17,7 @@ def get_requirements(file_path:str)->List[str]:
     return requirements
 
 setup(
-name='student_performance',
+name='youtube-sentiment-analysis',
 version='0.0.1',
 author='Rupesh',
 author_email='chaulagainrupesh1@gmail.com',
