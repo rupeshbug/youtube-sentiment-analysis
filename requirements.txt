@@ -1,0 +1,7 @@
+pandas
+matplotlib
+seaborn
+ipykernel
+youtube-data-api
+googleapiclient
+python-dotenv
