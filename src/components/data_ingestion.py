@@ -30,7 +30,7 @@ def fetch_youtube_comments(video_id):
             part="snippet",
             videoId=video_id,
             textFormat="plainText",
-            maxResults=100 
+            maxResults=10 
         )
         
         response = request.execute()

@@ -28,16 +28,13 @@ def analyze_sentiments(comments):
             "the top sentiment-related phrases or words. Consider comments expressing admiration or respect as Positive or Neutral."
         )
 
-        # Format comments for the prompt, without using json.dumps
-        formatted_comments = "\n".join([f"{i + 1}. {comment}" for i, comment in enumerate(comments)])
-
         user_message = f"""Analyze the following comments and classify the sentiment as Positive, Neutral, or Negative.
         Then, return:
         1. The count of Positive, Neutral, and Negative sentiments.
-        2. The **20 most frequently used words or phrases** that strongly indicate sentiment. Don't repeat them. (e.g., 'time waste', 'very good', 'not helpful').
+        2. The **20 most frequently used words or phrases** that strongly indicate sentiment. Dont repeat them. (e.g., 'time waste', 'very good', 'not helpful').
 
         Comments:
-        {formatted_comments}
+        {json.dumps(comments, indent=2)}
 
         Format the response as a JSON object like this:
         {{
@@ -57,10 +54,8 @@ def analyze_sentiments(comments):
         
         # Send the request to the Groq model
         chat_completion = client.chat.completions.create(
-            messages=[
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": user_message},
-            ],
+            messages=[{"role": "system", "content": system_message},
+                      {"role": "user", "content": user_message}],
             model="llama-3.3-70b-versatile",
             temperature=0.2,
             max_completion_tokens=1024,
@@ -84,3 +79,4 @@ def analyze_sentiments(comments):
     except Exception as e:
         logging.error(f"Error during sentiment analysis: {e}")
         raise CustomException(e, sys)
+    

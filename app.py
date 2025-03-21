@@ -1,5 +1,6 @@
 from src.components.data_ingestion import fetch_youtube_comments
+from src.components.prediction import analyze_sentiments
 
 comments = fetch_youtube_comments("Y-M3CrPzI5A")
-comments_str = "\n".join([f"{i+1}. {comment}" for i, comment in enumerate(comments)])
-print(comments_str)
+results = analyze_sentiments(comments)
+print(results)
