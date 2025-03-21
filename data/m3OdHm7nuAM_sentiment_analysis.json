@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 4,
+        "neutral": 6,
+        "negative": 10
+    },
+    "top_sentiment_phrases": [
+        "so petty",
+        "the worst",
+        "toxic",
+        "ruining relationships",
+        "just jealous",
+        "My Toy syndrome",
+        "only wants it when someone else wants to play with it",
+        "not helpful",
+        "so beautiful",
+        "love of your life"
+    ]
+}

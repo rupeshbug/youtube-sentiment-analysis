@@ -30,18 +30,23 @@ def fetch_youtube_comments(video_id):
             part="snippet",
             videoId=video_id,
             textFormat="plainText",
-            maxResults=20
+            maxResults=100
         )
         
-        # Fetch all comments, handling pagination
-        while request:
+        # Fetch comments with pagination, but stop when we have 100 comments
+        while request and len(comments) < 100:
             response = request.execute()
             for item in response["items"]:
                 comment = item["snippet"]["topLevelComment"]["snippet"]["textDisplay"]
                 comments.append(comment)
 
-            # Check if there's a next page
-            request = youtube.commentThreads().list_next(request, response)
+                # Break if we've reached the desired number of comments
+                if len(comments) >= 100:
+                    break
+
+            # Check if there's a next page and we haven't reached 100 comments yet
+            if len(comments) < 100:
+                request = youtube.commentThreads().list_next(request, response)
 
         logging.info(f"{len(comments)} comments fetched.")
         

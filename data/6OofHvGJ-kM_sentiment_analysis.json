@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 57,
+        "neutral": 21,
+        "negative": 22
+    },
+    "top_sentiment_phrases": [
+        "me gusta",
+        "very good",
+        "no te pierdas",
+        "gracias",
+        "on fire",
+        "lo justo",
+        "lindo ser",
+        "visca barca",
+        "hala madrid",
+        "forza barca"
+    ]
+}
