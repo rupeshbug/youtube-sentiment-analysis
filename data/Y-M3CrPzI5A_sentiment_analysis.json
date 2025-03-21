@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 83,
+        "neutral": 13,
+        "negative": 4
+    },
+    "top_sentiment_phrases": [
+        "RIP Matthew",
+        "I love",
+        "so funny",
+        "great cast",
+        "hilarious",
+        "beautiful",
+        "amazing",
+        "legend",
+        "miss you",
+        "rest in peace"
+    ]
+}

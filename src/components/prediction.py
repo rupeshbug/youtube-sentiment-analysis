@@ -2,6 +2,7 @@ import os
 import sys
 from groq import Groq
 import json
+import re
 
 from src.logger import logging
 from src.exception import CustomException
@@ -27,13 +28,15 @@ def analyze_sentiments(comments, video_id):
         system_message = (
             "You are an AI that analyzes the sentiment of YouTube comments. "
             "Your task is to classify sentiments as Positive, Negative, or Neutral and identify "
-            "the top sentiment-related phrases or words. Consider comments expressing admiration or respect as Positive or Neutral."
+            "the top sentiment-related phrases or words (e.g., 'time waste', 'very good', 'not helpful')."
+            "You must strictly return only the requested JSON object without any extra explanations or text."
+            
         )
 
         user_message = f"""Analyze the following comments and classify the sentiment as Positive, Neutral, or Negative.
         Then, return:
         1. The count of Positive, Neutral, and Negative sentiments.
-        2. The **20 most frequently used words or phrases** that strongly indicate sentiment. Dont repeat them. (e.g., 'time waste', 'very good', 'not helpful').
+        2. The **10 most frequently used sentiment-related phrases** that strongly indicate sentiment (e.g., 'time waste', 'very good', 'not helpful').
 
         Comments:
         {json.dumps(comments, indent=2)}
@@ -66,16 +69,29 @@ def analyze_sentiments(comments, video_id):
             stream=False
         )
 
-        logging.info("Sentiment Analysis by the model....")
+        # Log the raw response for debugging
+        logging.info("Result Saved....")
         
-        # Parse the response and extract sentiment counts and top phrases
-        response_dict = json.loads(chat_completion.choices[0].message.content)
+        # Extract the JSON part of the response using regex
+        match = re.search(r'(\{.*\})', chat_completion.choices[0].message.content, re.DOTALL)
         
-        sentiment_counts = response_dict["sentiment_counts"]
-        top_sentiment_phrases = response_dict["top_sentiment_phrases"]
+        if not match:
+            logging.error("Failed to find valid JSON in the response.")
+            raise CustomException("Failed to extract valid JSON from Groq response", sys)
         
+        # Parse the valid JSON
+        response_dict = json.loads(match.group(1))
+        
+        sentiment_counts = response_dict.get("sentiment_counts", {})
+        top_sentiment_phrases = response_dict.get("top_sentiment_phrases", [])
+
+        if not sentiment_counts or not top_sentiment_phrases:
+            logging.error("Invalid response: Missing sentiment counts or top phrases.")
+            raise CustomException("Groq response is missing sentiment counts or phrases", sys)
+
         logging.info("Results obtained")
         
+        # Save results to file
         save_results_to_file(sentiment_counts, top_sentiment_phrases, video_id)
 
         return sentiment_counts, top_sentiment_phrases
@@ -83,4 +99,3 @@ def analyze_sentiments(comments, video_id):
     except Exception as e:
         logging.error(f"Error during sentiment analysis: {e}")
         raise CustomException(e, sys)
-    
