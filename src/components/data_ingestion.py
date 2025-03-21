@@ -30,7 +30,7 @@ def fetch_youtube_comments(video_id):
             part="snippet",
             videoId=video_id,
             textFormat="plainText",
-            maxResults=20
+            maxResults=100
         )
         
         # Fetch comments with pagination, but stop when we have 100 comments

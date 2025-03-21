@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 73,
+        "neutral": 14,
+        "negative": 13
+    },
+    "top_sentiment_phrases": [
+        "I love",
+        "so funny",
+        "very good",
+        "great show",
+        "I hated",
+        "not even a word",
+        "that's not fair",
+        "I love this",
+        "so cute",
+        "awesome and bring me laughter"
+    ]
+}

@@ -7,4 +7,6 @@ googleapiclient
 python-dotenv
 groq
 Flask
+plotly
+wordcloud
 # -e .

@@ -14,34 +14,38 @@
       <div class="results-card">
         <h1>Sentiment Analysis Results</h1>
 
+        <!-- Sentiment Grid -->
         <div class="sentiment-section">
           <h2>Sentiment Counts</h2>
           <div class="sentiment-grid">
             <div class="sentiment-box positive">
-              <h3>Positive</h3>
               <p>{{ sentiment_counts['positive'] }}</p>
+              <p>Positive</p>
             </div>
             <div class="sentiment-box neutral">
-              <h3>Neutral</h3>
               <p>{{ sentiment_counts['neutral'] }}</p>
+              <p>Neutral</p>
             </div>
             <div class="sentiment-box negative">
-              <h3>Negative</h3>
               <p>{{ sentiment_counts['negative'] }}</p>
+              <p>Negative</p>
             </div>
           </div>
         </div>
 
-        <div class="phrases-section">
-          <h2>Top Sentiment Phrases</h2>
-          <ul class="phrases-list">
-            {% for phrase in top_sentiment_phrases %}
-            <li>{{ phrase }}</li>
-            {% endfor %}
-          </ul>
+        <!-- Pie Chart -->
+        <div class="pie-chart-section">
+          <h2>Sentiment Distribution</h2>
+          <div>{{ pie_chart|safe }}</div>
         </div>
 
-        <a href="/" class="home-link">Analyze Another Video</a>
+        <!-- Word Cloud -->
+        <div class="word-cloud-section">
+          <h2>Top Sentiment Phrases</h2>
+          <div>
+            <img src="{{ word_cloud }}" alt="Word Cloud" />
+          </div>
+        </div>
       </div>
     </div>
   </body>
