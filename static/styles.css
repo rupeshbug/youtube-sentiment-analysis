@@ -1,16 +1,18 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  max-height: 100vh;
+  background-color: #f0f2f5;
 }
 
+/********* Home Page Styling *********/
+
 .home-container {
-  margin-top: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 300px;
+  height: 100vh;
 }
 
 .card {
@@ -22,42 +24,105 @@ body {
   width: 350px;
 }
 
-.card > h1 {
-  color: #333;
-}
-
 input {
-  width: 100%;
+  width: 90%;
   padding: 10px;
   margin: 15px 0;
-  border: 1px solid #ccc;
   border-radius: 5px;
+  border: 1px solid #333;
 }
 
 button {
-  background-color: oklch(0.789 0.154 211.53);
+  background-color: #29a0a0;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 12px;
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
   font-size: 18px;
 }
 
-.home-form > label {
-  font-size: 18px;
-}
+/********* Results Page Styling *********/
 
-/******* Results Page ********/
-
-.results-container {
-  padding: 24px;
+.results-wrapper {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  height: 100vh;
+}
+
+.results-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   text-align: center;
+  width: 450px;
+}
+
+.sentiment-section h2 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.sentiment-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sentiment-box {
+  padding: 15px;
+  border-radius: 8px;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
+
+.positive {
+  background-color: #40c960;
+}
+
+.neutral {
+  background-color: #e6b421;
+}
+
+.negative {
+  background-color: #df636f;
+}
+
+.sentiment-box p {
+  font-size: 24px;
+  margin: 5px 0 0;
+}
+
+/* Styling the phrases list */
+.phrases-section h2 {
+  margin-top: 20px;
+}
+
+.phrases-list {
+  list-style: none;
+  padding: 0;
+}
+
+.phrases-list li {
+  background: #f8f9fa;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Home Button */
+.home-link {
+  display: block;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #29a0a0;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
 }

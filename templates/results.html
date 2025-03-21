@@ -10,20 +10,39 @@
     />
   </head>
   <body>
-    <div class="results-container">
-      <h1>Sentiment Analysis Results</h1>
-      <h2>Sentiment Counts</h2>
-      <ul class="results">
-        <li>Positive: {{ sentiment_counts['positive'] }}</li>
-        <li>Neutral: {{ sentiment_counts['neutral'] }}</li>
-        <li>Negative: {{ sentiment_counts['negative'] }}</li>
-      </ul>
-      <h2>Top Sentiment Phrases</h2>
-      <ul>
-        {% for phrase in top_sentiment_phrases %}
-        <li>{{ phrase }}</li>
-        {% endfor %}
-      </ul>
+    <div class="results-wrapper">
+      <div class="results-card">
+        <h1>Sentiment Analysis Results</h1>
+
+        <div class="sentiment-section">
+          <h2>Sentiment Counts</h2>
+          <div class="sentiment-grid">
+            <div class="sentiment-box positive">
+              <h3>Positive</h3>
+              <p>{{ sentiment_counts['positive'] }}</p>
+            </div>
+            <div class="sentiment-box neutral">
+              <h3>Neutral</h3>
+              <p>{{ sentiment_counts['neutral'] }}</p>
+            </div>
+            <div class="sentiment-box negative">
+              <h3>Negative</h3>
+              <p>{{ sentiment_counts['negative'] }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="phrases-section">
+          <h2>Top Sentiment Phrases</h2>
+          <ul class="phrases-list">
+            {% for phrase in top_sentiment_phrases %}
+            <li>{{ phrase }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <a href="/" class="home-link">Analyze Another Video</a>
+      </div>
     </div>
   </body>
 </html>
