@@ -6,15 +6,19 @@
     <title>YouTube Sentiment Analysis</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='styles.css') }}"
     />
   </head>
   <body>
-    <h1>Analyze YouTube Video Comments</h1>
-    <form action="/analyze" method="post">
-      <label for="video_id">Enter Video ID:</label>
-      <input type="text" id="video_id" name="video_id" required />
-      <button type="submit">Analyze</button>
-    </form>
+    <div class="home-container">
+      <div class="card">
+        <h1>Analyze YouTube Video Comments</h1>
+        <form action="/analyze" method="post" class="home-form">
+          <label for="video_id">Enter Video ID:</label>
+          <input type="text" id="video_id" name="video_id" required />
+          <button type="submit">Analyze</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

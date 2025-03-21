@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 83,
+        "neutral": 12,
+        "negative": 5
+    },
+    "top_sentiment_phrases": [
+        "love you",
+        "thank you",
+        "very good",
+        "beautiful voice",
+        "nice song",
+        "awesome",
+        "great song",
+        "good song",
+        "love this song",
+        "atif aslam is best"
+    ]
+}

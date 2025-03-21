@@ -6,22 +6,24 @@
     <title>Sentiment Analysis Results</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='styles.css') }}"
     />
   </head>
   <body>
-    <h1>Sentiment Analysis Results</h1>
-    <h2>Sentiment Counts</h2>
-    <ul>
-      <li>Positive: {{ sentiment_counts['positive'] }}</li>
-      <li>Neutral: {{ sentiment_counts['neutral'] }}</li>
-      <li>Negative: {{ sentiment_counts['negative'] }}</li>
-    </ul>
-    <h2>Top Sentiment Phrases</h2>
-    <ul>
-      {% for phrase in top_sentiment_phrases %}
-      <li>{{ phrase }}</li>
-      {% endfor %}
-    </ul>
+    <div class="results-container">
+      <h1>Sentiment Analysis Results</h1>
+      <h2>Sentiment Counts</h2>
+      <ul class="results">
+        <li>Positive: {{ sentiment_counts['positive'] }}</li>
+        <li>Neutral: {{ sentiment_counts['neutral'] }}</li>
+        <li>Negative: {{ sentiment_counts['negative'] }}</li>
+      </ul>
+      <h2>Top Sentiment Phrases</h2>
+      <ul>
+        {% for phrase in top_sentiment_phrases %}
+        <li>{{ phrase }}</li>
+        {% endfor %}
+      </ul>
+    </div>
   </body>
 </html>

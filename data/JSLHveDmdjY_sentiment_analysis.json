@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 85,
+        "neutral": 10,
+        "negative": 5
+    },
+    "top_sentiment_phrases": [
+        "very good",
+        "love this song",
+        "awesome",
+        "beautiful song",
+        "great song",
+        "masterpiece",
+        "heart touching",
+        "peaceful",
+        "soothing",
+        "amazing"
+    ]
+}
