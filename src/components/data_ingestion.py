@@ -30,7 +30,7 @@ def fetch_youtube_comments(video_id):
             part="snippet",
             videoId=video_id,
             textFormat="plainText",
-            maxResults=10
+            maxResults=20
         )
         
         # Fetch all comments, handling pagination

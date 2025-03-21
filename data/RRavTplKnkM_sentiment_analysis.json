@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 143,
+        "neutral": 27,
+        "negative": 30
+    },
+    "top_sentiment_phrases": [
+        "best final ever",
+        "great goal",
+        "world cup final",
+        "messi is the best",
+        "mbappe is amazing",
+        "argentina won",
+        "france is consistent",
+        "zidane's goal",
+        "gotze's winner",
+        "2022 was insane"
+    ]
+}

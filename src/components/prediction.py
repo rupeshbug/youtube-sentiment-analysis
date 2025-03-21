@@ -68,9 +68,6 @@ def analyze_sentiments(comments, video_id):
             stop=None,
             stream=False
         )
-
-        # Log the raw response for debugging
-        logging.info("Result Saved....")
         
         # Extract the JSON part of the response using regex
         match = re.search(r'(\{.*\})', chat_completion.choices[0].message.content, re.DOTALL)
