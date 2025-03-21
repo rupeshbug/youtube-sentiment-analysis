@@ -6,11 +6,13 @@ import json
 from src.logger import logging
 from src.exception import CustomException
 
+from src.utils import save_results_to_file
+
 client = Groq(
     api_key=os.environ.get("GROQ_API_KEY")
 )
 
-def analyze_sentiments(comments):
+def analyze_sentiments(comments, video_id):
     """
     Analyzes sentiments of the provided YouTube comments using Groq's LLM.
 
@@ -67,12 +69,14 @@ def analyze_sentiments(comments):
         logging.info("Sentiment Analysis by the model....")
         
         # Parse the response and extract sentiment counts and top phrases
-        response = json.loads(chat_completion.choices[0].message.content)
-
-        sentiment_counts = response.get("sentiment_counts", {})
-        top_sentiment_phrases = response.get("top_sentiment_phrases", [])
+        response_dict = json.loads(chat_completion.choices[0].message.content)
+        
+        sentiment_counts = response_dict["sentiment_counts"]
+        top_sentiment_phrases = response_dict["top_sentiment_phrases"]
         
         logging.info("Results obtained")
+        
+        save_results_to_file(sentiment_counts, top_sentiment_phrases, video_id)
 
         return sentiment_counts, top_sentiment_phrases
 

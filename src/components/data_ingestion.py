@@ -30,21 +30,27 @@ def fetch_youtube_comments(video_id):
             part="snippet",
             videoId=video_id,
             textFormat="plainText",
-            maxResults=10 
+            maxResults=100
         )
         
-        response = request.execute()
-        
-        # Check if there are comments in the response
-        if "items" in response:
+        # Fetch all comments, handling pagination
+        while request:
+            response = request.execute()
             for item in response["items"]:
                 comment = item["snippet"]["topLevelComment"]["snippet"]["textDisplay"]
                 comments.append(comment)
-            logging.info(f"{len(comments)} comments fetched.")
-        else:
-            logging.warning("No comments found for the given video.")
-            
-        return comments
+
+            # Check if there's a next page
+            request = youtube.commentThreads().list_next(request, response)
+
+        logging.info(f"{len(comments)} comments fetched.")
+        
+        # Format comments as a numbered string
+        formatted_comments = "\n".join([f"{i+1}. {comment}" for i, comment in enumerate(comments)])
+
+        # Return formatted comments
+        return formatted_comments
+
     except Exception as e:
         logging.error(f"Error fetching comments: {str(e)}")
         raise CustomException(e, sys)
