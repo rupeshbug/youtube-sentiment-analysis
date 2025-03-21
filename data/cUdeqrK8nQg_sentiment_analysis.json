@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 44,
+        "neutral": 26,
+        "negative": 30
+    },
+    "top_sentiment_phrases": [
+        "very good",
+        "pure magic",
+        "absolute menace",
+        "what a performance",
+        "complete baller",
+        "stunning goal",
+        "beautiful matchup",
+        "excellent game",
+        "phenomenal player",
+        "outstanding performance"
+    ]
+}
