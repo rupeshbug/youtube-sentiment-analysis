@@ -1,8 +1,8 @@
 {
     "sentiment_counts": {
-        "positive": 73,
+        "positive": 63,
         "neutral": 13,
-        "negative": 14
+        "negative": 24
     },
     "top_sentiment_phrases": [
         "I miss you",
@@ -11,9 +11,9 @@
         "love this song",
         "great voice",
         "so sad",
-        "miss him",
-        "heart breaks",
-        "wonderful",
+        "broken heart",
+        "thank you",
+        "miss you Chris",
         "amazing voice"
     ]
 }

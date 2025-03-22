@@ -1,14 +1,50 @@
+/* General Styles */
 body {
-    width: 200px;
-    padding: 10px;
+    width: 350px;  /* Increased width */
+    padding: 15px;
     text-align: center;
     font-family: Arial, sans-serif;
 }
+
+/* Button Styling */
 button {
     background-color: #29a0a0;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Sentiment Counts Grid */
+.sentiment-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.sentiment-box {
+    padding: 10px;
+    border-radius: 6px;
+    width: 100px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.positive { background-color: #40c960; }
+.neutral { background-color: #e6b421; }
+.negative { background-color: #df636f; }
+
+/* Word Cloud & Pie Chart */
+.word-cloud, .pie-chart {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 6px;
 }

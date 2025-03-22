@@ -27,20 +27,22 @@ def analyze():
         comments = fetch_youtube_comments(video_id)
         sentiment_counts, top_sentiment_phrases = analyze_sentiments(comments, video_id)
         
-        # Create Pie Chart and Word Cloud, save them as files or return URLs
-        pie_chart_url = create_pie_chart(sentiment_counts)  # This can save a file and return its URL
+        # Get the sentiment counts for the pie chart
+        pie_chart_data = create_pie_chart(sentiment_counts)
         word_cloud_url = create_word_cloud(top_sentiment_phrases)  # Same for the word cloud image
         
         # Prepare the response data as a JSON object
         response_data = {
-            
-            'status':"success",
+            'status': "success",
             'sentiment_counts': sentiment_counts,
             'top_sentiment_phrases': top_sentiment_phrases,
-            'pie_chart_url': pie_chart_url,
+            'pie_chart_data': { 
+                'positive': sentiment_counts['positive'],
+                'neutral': sentiment_counts['neutral'],
+                'negative': sentiment_counts['negative']
+            },
             'word_cloud_url': word_cloud_url
         }
-        
         # Return JSON response
         return jsonify(response_data), 200
     
@@ -48,19 +50,19 @@ def analyze():
         return jsonify({"error": str(e)}), 400
     
 def create_pie_chart(sentiment_counts):
-    fig = px.pie(
-        names=['Positive', 'Neutral', 'Negative'],
-        values=[sentiment_counts['positive'], sentiment_counts['neutral'], sentiment_counts['negative']],
-        title="Sentiment Distribution"
-    )
-    return fig.to_html(full_html=False)
+    # Instead of returning full HTML, return just the counts to be used by the frontend
+    return {
+        'positive': sentiment_counts['positive'],
+        'neutral': sentiment_counts['neutral'],
+        'negative': sentiment_counts['negative']
+    }
 
 def create_word_cloud(phrases):
     # Join phrases into a single string for WordCloud
     text = ' '.join(phrases)  # No need for .keys(), just join the list
 
     # Generate the word cloud
-    wc = WordCloud(width=800, height=400, background_color='white', max_words=100).generate(text)
+    wc = WordCloud(width=300, height=250, background_color='white', max_words=100).generate(text)
 
     # Save the word cloud to a BytesIO object
     img = io.BytesIO()

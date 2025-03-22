@@ -33,21 +33,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (data.status === "success") {
             resultContainer.innerHTML = `
-              <h3>Sentiment Analysis</h3>
-              <p>Positive: ${data.sentiment_counts.positive}</p>
-              <p>Neutral: ${data.sentiment_counts.neutral}</p>
-              <p>Negative: ${data.sentiment_counts.negative}</p>
-              <h4>Top Words:</h4>
-              <p>${data.top_sentiment_phrases.join(", ")}</p>
+                            <h2>Sentiment Analysis</h2>
+                            <div class="sentiment-grid">
+                                <div class="sentiment-box positive">Positive<br>${
+                                  data.sentiment_counts.positive
+                                }</div>
+                                <div class="sentiment-box neutral">Neutral<br>${
+                                  data.sentiment_counts.neutral
+                                }</div>
+                                <div class="sentiment-box negative">Negative<br>${
+                                  data.sentiment_counts.negative
+                                }</div>
+                            </div>
+
+                            <h3>Top Words:</h3>
+                            <p>${data.top_sentiment_phrases.join(", ")}</p>
             `;
+
+            // Insert the Word Cloud
+            let wordCloudContainer = document.createElement("div");
+            wordCloudContainer.innerHTML = `<img src="${data.word_cloud_url}" alt="Word Cloud" />`;
+            resultContainer.appendChild(wordCloudContainer);
+
+            // Render the Pie Chart using Plotly
+            let pieChartContainer = document.createElement("div");
+            pieChartContainer.id = "pie-chart"; // Set an ID for the container
+            resultContainer.appendChild(pieChartContainer);
+
+            // Plot the pie chart using Plotly
+            let pieChartData = [
+              {
+                values: [
+                  data.pie_chart_data.positive,
+                  data.pie_chart_data.neutral,
+                  data.pie_chart_data.negative,
+                ],
+                labels: ["Positive", "Neutral", "Negative"],
+                type: "pie",
+              },
+            ];
+            let pieChartLayout = {
+              title: "Sentiment Distribution",
+            };
+
+            Plotly.newPlot("pie-chart", pieChartData, pieChartLayout);
           } else {
             resultContainer.innerHTML =
               "<p style='color: red;'>Error analyzing comments.</p>";
           }
         } catch (error) {
           console.error("Error:", error);
-          resultContainer.innerHTML =
-            "<p style='color: red;'>Server not responding: ${error.message}</p>";
+          resultContainer.innerHTML = `<p style='color: red;'>Server not responding: ${error.message}</p>`;
         }
       }
     );
