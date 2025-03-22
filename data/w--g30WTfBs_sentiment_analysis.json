@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 73,
+        "neutral": 14,
+        "negative": 0
+    },
+    "top_sentiment_phrases": [
+        "I love",
+        "Nice song",
+        "Mind-blowing song",
+        "Old is gold",
+        "Wonderful songs",
+        "Excellent voice",
+        "So beautiful song",
+        "My favourite song",
+        "Very nostalgic song",
+        "Heaven"
+    ]
+}

@@ -32,35 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log(data);
 
           if (data.status === "success") {
-            resultContainer.innerHTML = `
-                            <h2>Sentiment Analysis</h2>
-                            <div class="sentiment-grid">
-                                <div class="sentiment-box positive">Positive<br>${
-                                  data.sentiment_counts.positive
-                                }</div>
-                                <div class="sentiment-box neutral">Neutral<br>${
-                                  data.sentiment_counts.neutral
-                                }</div>
-                                <div class="sentiment-box negative">Negative<br>${
-                                  data.sentiment_counts.negative
-                                }</div>
-                            </div>
+            resultContainer.innerHTML = `<h2>Sentiment Analysis</h2>`;
 
-                            <h3>Top Words:</h3>
-                            <p>${data.top_sentiment_phrases.join(", ")}</p>
-            `;
+            // 🎯 **1️⃣ Show Sentiment Grid First**
+            let sentimentGrid = document.createElement("div");
+            sentimentGrid.className = "sentiment-grid";
+            sentimentGrid.innerHTML = `
+            <div class="sentiment-box positive">Positive<br>${data.sentiment_counts.positive}</div>
+            <div class="sentiment-box neutral">Neutral<br>${data.sentiment_counts.neutral}</div>
+            <div class="sentiment-box negative">Negative<br>${data.sentiment_counts.negative}</div>
+          `;
+            resultContainer.appendChild(sentimentGrid);
 
-            // Insert the Word Cloud
-            let wordCloudContainer = document.createElement("div");
-            wordCloudContainer.innerHTML = `<img src="${data.word_cloud_url}" alt="Word Cloud" />`;
-            resultContainer.appendChild(wordCloudContainer);
-
-            // Render the Pie Chart using Plotly
+            // 🎯 **2️⃣ Display Pie Chart Below**
             let pieChartContainer = document.createElement("div");
-            pieChartContainer.id = "pie-chart"; // Set an ID for the container
+            pieChartContainer.id = "pie-chart";
             resultContainer.appendChild(pieChartContainer);
 
-            // Plot the pie chart using Plotly
             let pieChartData = [
               {
                 values: [
@@ -72,11 +60,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 type: "pie",
               },
             ];
-            let pieChartLayout = {
-              title: "Sentiment Distribution",
-            };
-
+            let pieChartLayout = { title: "Sentiment Distribution" };
             Plotly.newPlot("pie-chart", pieChartData, pieChartLayout);
+
+            // 🎯 **3️⃣ Show Top Words Below**
+            let topWordsContainer = document.createElement("div");
+            topWordsContainer.innerHTML = `
+            <h2>Top Words:</h2>
+            <p>${data.top_sentiment_phrases.join(", ")}</p>
+          `;
+            resultContainer.appendChild(topWordsContainer);
+
+            // 🎯 **4️⃣ Show Word Cloud Last**
+            let wordCloudContainer = document.createElement("div");
+            wordCloudContainer.innerHTML = `<img src="${data.word_cloud_url}" alt="Word Cloud" />`;
+            resultContainer.appendChild(wordCloudContainer);
           } else {
             resultContainer.innerHTML =
               "<p style='color: red;'>Error analyzing comments.</p>";

@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 83,
+        "neutral": 12,
+        "negative": 5
+    },
+    "top_sentiment_phrases": [
+        "I love you",
+        "Very good",
+        "Love this song",
+        "Great singing",
+        "Nice song",
+        "Sanam is the best",
+        "Beautiful song",
+        "Amazing voice",
+        "Heart touching",
+        "Soulful music"
+    ]
+}

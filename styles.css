@@ -1,12 +1,14 @@
-/* General Styles */
 body {
-    width: 350px;  /* Increased width */
-    padding: 15px;
+    width: 360px; 
+    padding: 20px;
     text-align: center;
     font-family: Arial, sans-serif;
 }
 
-/* Button Styling */
+.heading {
+    color: #333;
+}
+
 button {
     background-color: #29a0a0;
     color: white;
