@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultContainer = document.getElementById("result");
 
   analyzeButton.addEventListener("click", async function () {
-    // disable the button and set cursor to not-allowed after clicking
+    // disable the button and set cursor to not-allowed after clicking for analysis
     analyzeButton.disabled = true;
     analyzeButton.innerText = "Analyzing...";
     analyzeButton.style.cursor = "not-allowed";
