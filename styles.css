@@ -42,9 +42,17 @@ button {
     color: white;
 }
 
-.positive { background-color: #40c960; }
-.neutral { background-color: #e6b421; }
-.negative { background-color: #df636f; }
+.positive { 
+    background-color: #40c960; 
+}
+
+.neutral { 
+    background-color: #e6b421; 
+}
+
+.negative { 
+    background-color: #df636f; 
+}
 
 .word-cloud, .pie-chart {
     width: 100%;
