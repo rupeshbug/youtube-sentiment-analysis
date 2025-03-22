@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.status === "success") {
             resultContainer.innerHTML = `<h2>Sentiment Analysis</h2>`;
 
-            // 🎯 **1️⃣ Show Sentiment Grid First**
+            // sentiment grid
             let sentimentGrid = document.createElement("div");
             sentimentGrid.className = "sentiment-grid";
             sentimentGrid.innerHTML = `
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
           `;
             resultContainer.appendChild(sentimentGrid);
 
-            // 🎯 **2️⃣ Display Pie Chart Below**
+            // pie chart
             let pieChartContainer = document.createElement("div");
             pieChartContainer.id = "pie-chart";
             resultContainer.appendChild(pieChartContainer);
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let pieChartLayout = { title: "Sentiment Distribution" };
             Plotly.newPlot("pie-chart", pieChartData, pieChartLayout);
 
-            // 🎯 **3️⃣ Show Top Words Below**
+            // top words or phrases
             let topWordsContainer = document.createElement("div");
             topWordsContainer.innerHTML = `
             <h2>Top Words:</h2>
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
           `;
             resultContainer.appendChild(topWordsContainer);
 
-            // 🎯 **4️⃣ Show Word Cloud Last**
+            // word cloud
             let wordCloudContainer = document.createElement("div");
             wordCloudContainer.innerHTML = `<img src="${data.word_cloud_url}" alt="Word Cloud" />`;
             resultContainer.appendChild(wordCloudContainer);
