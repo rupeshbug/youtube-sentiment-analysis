@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 63,
+        "neutral": 21,
+        "negative": 16
+    },
+    "top_sentiment_phrases": [
+        "Hasta la vista",
+        "very good",
+        "what a waste",
+        "not helpful",
+        "time waste",
+        "feeling sad",
+        "great job",
+        "well done",
+        "good old days",
+        "still paying for that night"
+    ]
+}

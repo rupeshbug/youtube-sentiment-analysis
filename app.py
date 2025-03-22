@@ -50,7 +50,6 @@ def analyze():
         return jsonify({"error": str(e)}), 400
     
 def create_pie_chart(sentiment_counts):
-    # Instead of returning full HTML, return just the counts to be used by the frontend
     return {
         'positive': sentiment_counts['positive'],
         'neutral': sentiment_counts['neutral'],
@@ -58,10 +57,8 @@ def create_pie_chart(sentiment_counts):
     }
 
 def create_word_cloud(phrases):
-    # Join phrases into a single string for WordCloud
-    text = ' '.join(phrases)  # No need for .keys(), just join the list
+    text = ' '.join(phrases)
 
-    # Generate the word cloud
     wc = WordCloud(width=300, height=250, background_color='white', max_words=100).generate(text)
 
     # Save the word cloud to a BytesIO object
