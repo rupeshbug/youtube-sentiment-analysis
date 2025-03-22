@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 57,
+        "neutral": 23,
+        "negative": 20
+    },
+    "top_sentiment_phrases": [
+        "very good",
+        "incredible",
+        "so happy",
+        "love the game",
+        "best match ever",
+        "so satisfying",
+        "beautiful game",
+        "unstoppable",
+        "great coach",
+        "thanks STY"
+    ]
+}
