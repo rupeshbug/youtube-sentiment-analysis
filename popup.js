@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultContainer = document.getElementById("result");
 
   analyzeButton.addEventListener("click", async function () {
+    // disable the button and set cursor to not-allowed after clicking
+    analyzeButton.disabled = true;
+    analyzeButton.innerText = "Analyzing...";
+    analyzeButton.style.cursor = "not-allowed";
+
     chrome.tabs.query(
       { active: true, currentWindow: true },
       async function (tabs) {
@@ -12,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!videoId) {
           resultContainer.innerHTML =
             "<p style='color: red;'>Invalid YouTube URL</p>";
+          analyzeButton.disabled = false;
+          analyzeButton.innerText = "Analyze Sentiment";
+          analyzeButton.style.cursor = "pointer";
           return;
         }
 
@@ -63,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let pieChartLayout = { title: "Sentiment Distribution" };
             Plotly.newPlot("pie-chart", pieChartData, pieChartLayout);
 
-            // top words or phrases
+            // top words
             let topWordsContainer = document.createElement("div");
             topWordsContainer.innerHTML = `
-            <h2>Top Words:</h2>
+            <h3>Top Words:</h3>
             <p>${data.top_sentiment_phrases.join(", ")}</p>
           `;
             resultContainer.appendChild(topWordsContainer);
@@ -75,13 +83,23 @@ document.addEventListener("DOMContentLoaded", function () {
             let wordCloudContainer = document.createElement("div");
             wordCloudContainer.innerHTML = `<img src="${data.word_cloud_url}" alt="Word Cloud" />`;
             resultContainer.appendChild(wordCloudContainer);
+
+            // disable button completely after results are shown
+            analyzeButton.innerText = "Analysis Complete";
+            analyzeButton.style.cursor = "not-allowed";
           } else {
             resultContainer.innerHTML =
               "<p style='color: red;'>Error analyzing comments.</p>";
+            analyzeButton.disabled = false;
+            analyzeButton.innerText = "Analyze Sentiment";
+            analyzeButton.style.cursor = "pointer";
           }
         } catch (error) {
           console.error("Error:", error);
           resultContainer.innerHTML = `<p style='color: red;'>Server not responding: ${error.message}</p>`;
+          analyzeButton.disabled = false;
+          analyzeButton.innerText = "Analyze Sentiment";
+          analyzeButton.style.cursor = "pointer";
         }
       }
     );

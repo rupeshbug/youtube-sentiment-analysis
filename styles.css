@@ -21,6 +21,11 @@ button {
     margin-top: 10px;
 }
 
+#analyzeBtn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
 /* Sentiment Counts Grid */
 .sentiment-grid {
     display: flex;
