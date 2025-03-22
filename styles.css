@@ -46,7 +46,6 @@ button {
 .neutral { background-color: #e6b421; }
 .negative { background-color: #df636f; }
 
-/* Word Cloud & Pie Chart */
 .word-cloud, .pie-chart {
     width: 100%;
     max-width: 300px;
