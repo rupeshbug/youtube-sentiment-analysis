@@ -1,6 +1,8 @@
 ## YouTube Sentiment Analysis Chrome Extension
 
-Analyze YouTube video comments instantly with sentiment insights! This Chrome extension fetches comments from a video, analyzes their sentiment using AI, and provides a pie chart, sentiment counts, and a word cloud for better understanding.
+Analyze YouTube video comments instantly with sentiment insights! This Chrome extension fetches comments from a video, analyzes their sentiment using AI, and provides a pie chart, sentiment counts, and a word cloud for better understanding. 
+
+We have utilized **Groq**, which offers AI inference as a service, allowing us to leverage powerful AI models for sentiment analysis. The sentiment analysis is powered by an open-source model available through Groq’s API, providing accurate and efficient sentiment classification for YouTube comments.
 
 ### ✨ Features
 
