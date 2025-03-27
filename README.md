@@ -23,3 +23,14 @@ Analyze YouTube video comments instantly with sentiment insights! This Chrome ex
 - JavaScript (Chrome Extension Development)
 
 - HTML & CSS (Popup UI)
+
+### 📸 Screenshots  
+
+#### **1️⃣ Extension Popup UI**
+![Popup UI](screenshots/img1.png)
+
+#### **2️⃣ Sentiment Analysis Results**
+![Sentiment Results](screenshots/img2.png.png)
+
+#### **3️⃣ Word Cloud & Pie Chart**
+![Word Cloud & Pie Chart](screenshots/img3.png)
