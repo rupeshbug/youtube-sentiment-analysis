@@ -14,7 +14,7 @@ Analyze YouTube video comments instantly with sentiment insights! This Chrome ex
 
 - Flask (Backend API)
 
-- Groq AI (Llama 3.3-70B-Versatile) (for Sentiment Analysis)
+- Groq AI (Llama 3.3-70B-Versatile) (Sentiment Analysis)
 
 - YouTube Data API (Fetching comments)
 
