@@ -1,0 +1,19 @@
+{
+    "sentiment_counts": {
+        "positive": 63,
+        "neutral": 21,
+        "negative": 16
+    },
+    "top_sentiment_phrases": [
+        "very good",
+        "GOAT",
+        "iconic moment",
+        "love messi",
+        "great save",
+        "best world cup",
+        "magical",
+        "undisputed GOAT",
+        "most iconic",
+        "amazing goal"
+    ]
+}
