@@ -30,7 +30,7 @@ Analyze YouTube video comments instantly with sentiment insights! This Chrome ex
 ![Popup UI](screenshots/img1.png)
 
 #### **2️⃣ Sentiment Analysis Results**
-![Sentiment Results](screenshots/img2.png.png)
+![Sentiment Results](screenshots/img2.png)
 
 #### **3️⃣ Word Cloud & Pie Chart**
 ![Word Cloud & Pie Chart](screenshots/img3.png)
