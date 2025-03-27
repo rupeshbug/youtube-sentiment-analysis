@@ -25,6 +25,8 @@ button {
     margin-top: 10px;
 }
 
+/* arko button */
+
 #analyzeBtn:disabled {
     cursor: not-allowed;
     opacity: 0.6;
